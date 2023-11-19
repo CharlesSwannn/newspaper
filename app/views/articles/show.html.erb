@@ -1,0 +1,26 @@
+<h1><%= @article.title %></h1>
+<p><%= @article.content %></p>
+<%= image_tag @article.image_url, style:"width:300px" %>
+<p><%= link_to "Back to index", articles_path %></p>
+<hr>
+<%= link_to "Create new comment", new_article_comment_path(@article) %>
+
+<% @article.comments.each do |comment| %>
+  <p><%= comment.content %></p>
+<% end %>
+
+<hr>
+
+<h3>Add a new section</h3>
+
+<%= simple_form_for [@article, @article_section] do |f| %>
+  <%= f.association :section %>
+  <%= f.submit "Associate to a section" %>
+<% end %>
+
+<hr>
+
+<h3>Here are the sections of this article</h3>
+<% @article.sections.each do |section| %>
+  <p><%= section.name %></p>
+<% end %>

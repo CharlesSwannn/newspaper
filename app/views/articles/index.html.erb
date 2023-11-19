@@ -1,0 +1,8 @@
+<h1>Hello, these are your articles</h1>
+<%= link_to "Create new article", new_article_path  %>
+<% @articles.each do |article| %>
+  <h3><%= link_to article.title, article_path(article) %></h3>
+  <p><%= article.content %></p>
+  <%= image_tag article.image_url, style:'width:100px;' %>
+  <hr>
+<% end %>
